@@ -1,6 +1,6 @@
 class APIError(Exception):
     status_code = 500
-    message = 'Internal server error'
+    message = "Internal server error"
 
     def __init__(self, message=None, status_code=500):
         self.message = message or self.message
@@ -11,4 +11,4 @@ class APIError(Exception):
 
 
 class DBConnectionError(APIError):
-    message = 'DB Connection failed'
+    message = "DB Connection failed"

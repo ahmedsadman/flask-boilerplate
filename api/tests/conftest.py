@@ -4,7 +4,7 @@ from config import Config
 
 
 class TestConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
+    SQLALCHEMY_DATABASE_URI = "sqlite:///:memory:"
 
 
 @pytest.fixture()
@@ -13,6 +13,7 @@ def app():
 
     with app.app_context():
         from app.models import User  # noqa: F401
+
         db.create_all()
         yield app
         db.drop_all()

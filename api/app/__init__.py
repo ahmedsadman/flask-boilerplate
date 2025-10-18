@@ -22,8 +22,9 @@ def create_app(config: type[Config]) -> Flask:
     # blueprints
     from app.routes import main_bp
     from app.routes import user_bp
-    app.register_blueprint(main_bp, url_prefix='/')
-    app.register_blueprint(user_bp, url_prefix='/user')
+
+    app.register_blueprint(main_bp, url_prefix="/")
+    app.register_blueprint(user_bp, url_prefix="/user")
 
     from app.errors import APIError
 
@@ -40,10 +41,11 @@ def create_app(config: type[Config]) -> Flask:
     # init db
     with app.app_context():
         from app.models import User  # noqa: F401
+
         db.create_all()
 
     # cli commands
-    @app.cli.command('reset-db')
+    @app.cli.command("reset-db")
     def reset_db():
         db.drop_all()
         db.create_all()

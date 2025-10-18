@@ -10,3 +10,9 @@ reset-db:
 
 lint:
 	flake8 app/ tests/
+
+black-check:
+	black --check .
+
+black-format:
+	black .
